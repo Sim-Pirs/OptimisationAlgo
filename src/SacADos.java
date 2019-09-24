@@ -21,9 +21,15 @@ public class SacADos {
      */
     public void Glouton(ArrayList<Objet> objets){
         for(Objet objet : objets){
-            if(objet.poids < currentCapacity){
+            if(objet.poids <= currentCapacity){
                 objetsPris.add(objet);
+                objet.poidspris  = 1;
                 currentCapacity -= objet.poids;
+            }
+            else if(objet.poids > currentCapacity && currentCapacity > 0){
+                objet.poidspris = currentCapacity /objet.poids;
+                objetsPris.add(objet);
+                currentCapacity -= objet.poidspris * objet.poids;
             }
         }
     }

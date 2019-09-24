@@ -5,7 +5,7 @@ public class Objet implements Comparable<Objet> {
     int indice;
     double ratio;
     /*Question 1 : boolean estpris = false;*/
-    double estpris = 0;
+    double poidspris = 0; // 0 pas pris; 1 pris; 0<poidspris<1 partie de l'objet pris.
 
     public Objet(double poids, double valeur, int indice) {
         this.poids = poids;
