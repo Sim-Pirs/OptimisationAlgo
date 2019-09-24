@@ -5,6 +5,9 @@ public class SacADos {
     private double capacity;
     private double currentCapacity;
     private ArrayList<Objet> objetsPris = new ArrayList<Objet>();
+    double meilleurPoids;
+    double valeurMax;
+    int[] bestChemin;
 
     public void setCapacity(double capacity){
         this.capacity = capacity;
@@ -16,10 +19,10 @@ public class SacADos {
     }
 
     /**
-     * Utilise l'algorithme glouton pour remplir le sac     ;)
+     * Utilise l'algorithme glouton pour remplir le sac FRACTIONNAIRE    ;)
      * @param objets la liste d'objets triés par ordre décroissant de leurs ratios
      */
-    public void Glouton(ArrayList<Objet> objets){
+    public void GloutonFraction(ArrayList<Objet> objets){
         for(Objet objet : objets){
             if(objet.poids <= currentCapacity){
                 objetsPris.add(objet);
@@ -32,6 +35,65 @@ public class SacADos {
                 currentCapacity -= objet.poidspris * objet.poids;
             }
         }
+    }
+
+    /**
+     * Utilise l'algorithme glouton pour remplir le sac  NON-FRACTIONNAIRE   ;)
+     * @param objets la liste d'objets triés par ordre décroissant de leurs ratios
+     */
+    public void Glouton(ArrayList<Objet> objets){
+        for(Objet objet : objets){
+            if(objet.poids <= currentCapacity){
+                objetsPris.add(objet);
+                objet.poidspris  = 1;
+                currentCapacity -= objet.poids;
+            }
+        }
+    }
+
+
+    public void explorationArbre(ArrayList<Objet> objets, int hauteur, double valeurActuelle, double poidsActuel){
+
+        if(hauteur == objets.size()){
+            System.out.println("valeur actuelle : " + valeurActuelle);
+            if(valeurActuelle > valeurMax){
+                bestChemin = utils.saveState(objets);
+                valeurMax = valeurActuelle;
+            }
+        }
+
+        else{
+            if(objets.get(hauteur).poids + poidsActuel <= capacity){
+                objets.get(hauteur).poidspris = 1;
+                explorationArbre(objets, hauteur+1, valeurActuelle + objets.get(hauteur).valeur, poidsActuel + objets.get(hauteur).poids);
+            }
+
+            objets.get(hauteur).poidspris = 0;
+            explorationArbre(objets, hauteur+1, valeurActuelle, poidsActuel);
+        }
+
+    }
+
+    public void explorationArbreElaguer(ArrayList<Objet> objets, int hauteur, double valeurActuelle, double poidsActuel){
+
+        if(hauteur == objets.size()){
+            System.out.println("valeur actuelle : " + valeurActuelle);
+            if(valeurActuelle > valeurMax){
+                bestChemin = utils.saveState(objets);
+                valeurMax = valeurActuelle;
+            }
+        }
+
+        else{
+            if(objets.get(hauteur).poids + poidsActuel <= capacity){
+                objets.get(hauteur).poidspris = 1;
+                explorationArbre(objets, hauteur+1, valeurActuelle + objets.get(hauteur).valeur, poidsActuel + objets.get(hauteur).poids);
+            }
+
+            objets.get(hauteur).poidspris = 0;
+            explorationArbre(objets, hauteur+1, valeurActuelle, poidsActuel);
+        }
+
     }
 
     public void afficheObjetsPris(){

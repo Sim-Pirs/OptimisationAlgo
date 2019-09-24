@@ -19,7 +19,14 @@ public class utils {
         System.out.println("sum poids = " + sum);
     }
 
+    public static int[] saveState(ArrayList<Objet> objets){
+        int[] chemin = new int[objets.size()];
 
-
-
+        for (Objet objet : objets) {
+            if (objet.poidspris == 1)
+                chemin[objet.indice] = 1;
+            else chemin[objet.indice] = 0;
+        }
+        return chemin;
+    }
 }
