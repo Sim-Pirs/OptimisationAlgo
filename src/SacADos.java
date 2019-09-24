@@ -79,7 +79,6 @@ public class SacADos {
         double valeurMaxPossible = 0;
 
         if(hauteur == objets.size()){
-            System.out.println("valeur actuelle : " + valeurActuelle);
             if(valeurActuelle > valeurMax){
                 bestChemin = utils.saveState(objets);
                 valeurMax = valeurActuelle;

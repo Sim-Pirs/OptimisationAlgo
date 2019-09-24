@@ -16,11 +16,12 @@ public class main {
         sac.explorationArbreElague(objets,0,0, 0);
 
         System.out.println("Valeur optimale : " + sac.valeurMax);
+
+        System.out.println("Les objets pris sont : ");
         for(int index = 0; index < sac.bestChemin.length; index++){
             if(sac.bestChemin[index] == 1)
-                System.out.println("Objet : " + index + " pris !");
+                System.out.println("Objet : " + index);
         }
-
     }
 
 }
