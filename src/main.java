@@ -10,24 +10,17 @@ public class main {
         SacADos sac = new SacADos();
 
         LecteurFichiers.LitFichier(args[0],objets,sac);
-        //utils.afficheObjets(objets);
+
         utils.trieObjets(objets);
-        System.out.println("________________________________________");
-        //utils.afficheObjets(objets);
-
-        //sac.GloutonFraction(objets);
-
-        //sac.afficheObjetsPris();
 
         sac.explorationArbreElague(objets,0,0, 0);
 
         System.out.println("Valeur optimale : " + sac.valeurMax);
-        for(int i = 0; i < sac.bestChemin.length; i++){
-            if(sac.bestChemin[i] == 1)
-                System.out.println("Objet : " + i + " pris !");
+        for(int index = 0; index < sac.bestChemin.length; index++){
+            if(sac.bestChemin[index] == 1)
+                System.out.println("Objet : " + index + " pris !");
         }
 
-        //System.out.println("CAPACITY : " + sac.capacity);
     }
 
 }

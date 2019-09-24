@@ -17,20 +17,22 @@ public class LecteurFichiers {
 
         File file = new File(fileName);
 
-        Scanner sc = null;
+        Scanner scanner = null;
 
         try {
-            sc = new Scanner(file);
+            scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        if(sc.hasNextDouble()) //capacité sac à dos
-            capacity = Double.parseDouble(sc.next());
+        // lis et sauvegarde la capacité sac à dos qui est la première valeur du fichier
+        if(scanner.hasNextDouble())
+            capacity = Double.parseDouble(scanner.next());
             sac.setCapacity(capacity);
 
-        while (sc.hasNextDouble()){
-            objets.add(new Objet(sc.nextDouble(),sc.nextDouble(),compteur));
+        // lis et ajoute les objets
+        while (scanner.hasNextDouble()){
+            objets.add(new Objet(scanner.nextDouble(),scanner.nextDouble(),compteur));
             compteur++;
         }
     }

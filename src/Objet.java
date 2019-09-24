@@ -15,6 +15,11 @@ public class Objet implements Comparable<Objet> {
     }
 
     @Override
+    /**
+     * Compare le ratio de l'objet avec celui passé en paramètre
+     * @param Objet L'objet a comparé avec l'objet courant.
+     */
+
     public int compareTo(Objet o) {
         if(this.ratio < o.ratio )
             return 1;

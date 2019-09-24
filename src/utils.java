@@ -5,7 +5,7 @@ import java.util.Collections;
 public class utils {
 
     /**
-     * Trie les objets par valeur décroissante
+     * Trie les objets par orde décroissant en fonction de leur ratio
      * @param objets La liste des objets
      */
     public static void trieObjets(ArrayList<Objet> objets){
@@ -18,9 +18,9 @@ public class utils {
      */
     public static void afficheObjets(ArrayList<Objet> objets){
         double sum = 0;
-        for(int i=0; i<objets.size(); i++) {
-            System.out.println(objets.get(i).indice + " " + objets.get(i).poids + "  " + "poids pris : " + objets.get(i).poidspris + " " + "valeur : " + objets.get(i).valeur + " " + objets.get(i).ratio);
-            sum += objets.get(i).poidspris * objets.get(i).poids;
+        for(int index=0; index<objets.size(); index++) {
+            System.out.println(objets.get(index).indice + " " + objets.get(index).poids + "  " + "poids pris : " + objets.get(index).poidspris + " " + "valeur : " + objets.get(index).valeur + " " + objets.get(index).ratio);
+            sum += objets.get(index).poidspris * objets.get(index).poids;
             System.out.println(sum);
 
         }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SacADos {
+
     private double capacity;
     private double currentCapacity;
     private ArrayList<Objet> objetsPris = new ArrayList<Objet>();
@@ -53,13 +54,13 @@ public class SacADos {
     private double GloutonNoeud(ArrayList<Objet> objets, int hauteur, double capacity, double valeurDessus){
         double valeurMaxPossible = 0;
 
-        for(int i = hauteur; i < objets.size(); i++){
-            if(objets.get(i).poids <= capacity){
-                valeurMaxPossible += objets.get(i).valeur;
-                capacity -= objets.get(i).poids;
+        for(int index = hauteur; index < objets.size(); index++){
+            if(objets.get(index).poids <= capacity){
+                valeurMaxPossible += objets.get(index).valeur;
+                capacity -= objets.get(index).poids;
             }
-            else if(objets.get(i).poids > capacity && capacity > 0){
-                valeurMaxPossible += objets.get(i).valeur * (capacity / objets.get(i).poids);
+            else if(objets.get(index).poids > capacity && capacity > 0){
+                valeurMaxPossible += objets.get(index).valeur * (capacity / objets.get(index).poids);
                 capacity = 0;
             }
         }
