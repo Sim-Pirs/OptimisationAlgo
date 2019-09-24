@@ -51,6 +51,24 @@ public class SacADos {
         }
     }
 
+    /**
+     * Utilise l'algorithme glouton pour remplir le sac FRACTIONNAIRE    ;)
+     * @param objets la liste d'objets triés par ordre décroissant de leurs ratios
+     */
+    public void GloutonNoeud(ArrayList<Objet> objets, int hauteur){
+        for(Objet objet : objets){
+            if(objet.poids <= currentCapacity){
+                objetsPris.add(objet);
+                objet.poidspris  = 1;
+                currentCapacity -= objet.poids;
+            }
+            else if(objet.poids > currentCapacity && currentCapacity > 0){
+                objet.poidspris = currentCapacity /objet.poids;
+                objetsPris.add(objet);
+                currentCapacity -= objet.poidspris * objet.poids;
+            }
+        }
+    }
 
     public void explorationArbre(ArrayList<Objet> objets, int hauteur, double valeurActuelle, double poidsActuel){
 
@@ -67,6 +85,8 @@ public class SacADos {
                 objets.get(hauteur).poidspris = 1;
                 explorationArbre(objets, hauteur+1, valeurActuelle + objets.get(hauteur).valeur, poidsActuel + objets.get(hauteur).poids);
             }
+
+            glouton
 
             objets.get(hauteur).poidspris = 0;
             explorationArbre(objets, hauteur+1, valeurActuelle, poidsActuel);
@@ -93,7 +113,6 @@ public class SacADos {
             objets.get(hauteur).poidspris = 0;
             explorationArbre(objets, hauteur+1, valeurActuelle, poidsActuel);
         }
-
     }
 
     public void afficheObjetsPris(){
