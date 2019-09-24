@@ -4,10 +4,18 @@ import java.util.Collections;
 
 public class utils {
 
+    /**
+     * Trie les objets par valeur décroissante
+     * @param objets La liste des objets
+     */
     public static void trieObjets(ArrayList<Objet> objets){
         Collections.sort(objets);
     }
 
+    /**
+     * Affiche la liste des objets en indiquant s'ils ont été pris
+     * @param objets La liste des objets
+     */
     public static void afficheObjets(ArrayList<Objet> objets){
         double sum = 0;
         for(int i=0; i<objets.size(); i++) {
@@ -19,6 +27,11 @@ public class utils {
         System.out.println("sum poids = " + sum);
     }
 
+    /**
+     * Sauvegarde le meilleur état des objets possible
+     * @param objets La liste des objets
+     * @return Le meilleur chemin sous forme de tableau
+     */
     public static int[] saveState(ArrayList<Objet> objets){
         int[] chemin = new int[objets.size()];
 

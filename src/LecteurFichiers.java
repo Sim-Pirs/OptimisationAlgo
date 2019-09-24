@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class LecteurFichiers {
 
+    /**
+     * Lis le fichier "fileName" et remplis les valeurs d'objets et du sac
+     * @param fileName Le nom du fichier
+     * @param objets La liste d'objets
+     * @param sac Le sac à dos
+     */
     public static void LitFichier(String fileName, ArrayList<Objet> objets, SacADos sac){
 
         double capacity=-1;

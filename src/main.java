@@ -19,7 +19,7 @@ public class main {
 
         //sac.afficheObjetsPris();
 
-        sac.explorationArbre(objets,0,0, 0);
+        sac.explorationArbreElague(objets,0,0, 0);
 
         System.out.println("Valeur optimale : " + sac.valeurMax);
         for(int i = 0; i < sac.bestChemin.length; i++){
